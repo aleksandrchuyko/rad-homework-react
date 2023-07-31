@@ -1,18 +1,14 @@
 import React from 'react';
+import Layout from './Layout/Layout';
+import NoteView from '../pages/NoteView';
 
 const App: React.FC = () => {
   return (
     <div className='App'>
       <header className='App-header'>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
+        <h1>Hello Notes</h1>
       </header>
+      <Layout><NoteView/></Layout>
     </div>
   );
 };
