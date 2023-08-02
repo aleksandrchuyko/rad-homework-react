@@ -1,7 +1,7 @@
-import NoteList from '../components/NoteList/NoteList';
+import NoteTable from '../components/NoteTable/NoteTable';
 
 const NoteView: React.FC = () => {
-  return <NoteList></NoteList>;
+  return <NoteTable />;
 };
 
 export default NoteView;
