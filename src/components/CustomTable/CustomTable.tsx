@@ -1,9 +1,12 @@
+import { nanoid } from 'nanoid';
+
 type Props = {
   cols: {
     column: string;
     title: string;
   }[];
   rows: {
+    id: string;
     [key: string]: string | boolean | string[] | JSX.Element[];
   }[];
   children?: React.ReactNode;
@@ -15,15 +18,15 @@ const CustomTable: React.FC<Props> = ({ cols, rows }) => {
       <thead>
         <tr>
           {cols.map((col) => (
-            <th>{col.title}</th>
+            <th key={nanoid()}>{col.title}</th>
           ))}
         </tr>
       </thead>
       <tbody>
         {rows.map((row) => (
-          <tr>
+          <tr key={nanoid()}>
             {cols.map((col) => (
-              <td>{row[col.column]}</td>
+              <td key={nanoid()}>{row[col.column]}</td>
             ))}
           </tr>
         ))}

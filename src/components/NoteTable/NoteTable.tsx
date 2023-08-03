@@ -1,5 +1,7 @@
+import { useSelector } from 'react-redux';
 import CustomTable from '../CustomTable/CustomTable';
-import { initialNotes } from '../../constants/initialNotes';
+import { getNotes } from '../../redux/selectors';
+import { nanoid } from '@reduxjs/toolkit';
 
 const NoteTable: React.FC = () => {
   const cols = [
@@ -9,7 +11,8 @@ const NoteTable: React.FC = () => {
     { column: 'dates', title: 'Dates' },
     { column: 'actions', title: 'Actions' },
   ];
-  let notesMarkupList = initialNotes.reduce((acc: any[], note) => {
+  let notes = useSelector(getNotes);
+  let notesMarkupList = notes.reduce((acc: any[], note: any) => {
     if (note.active !== true) {
       return acc;
     }
@@ -17,11 +20,12 @@ const NoteTable: React.FC = () => {
       ...acc,
       {
         ...note,
-        actions: [<button>Delete</button>],
+        dates: note.dates.toString(),
+        actions: [<button key={nanoid()}>Delete</button>],
       },
     ]);
   }, []);
-  return <CustomTable cols={cols} rows={notesMarkupList}></CustomTable>;
+  return <CustomTable cols={cols} rows={notesMarkupList} />;
 };
 
 export default NoteTable;
