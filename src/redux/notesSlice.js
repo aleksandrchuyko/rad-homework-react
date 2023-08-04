@@ -78,7 +78,7 @@ const notesSlice = createSlice({
       reducer(state, action) {
         state.push(action.payload);
       },
-      prepare(category, content) {
+      prepare({category, content}) {
         return {
           payload: {
             createdAt: getFormatedDate(),
@@ -86,7 +86,7 @@ const notesSlice = createSlice({
             content,
             id: nanoid(),
             active: true,
-            dates: parseDates(),
+            dates: parseDates(content),
           },
         };
       },
@@ -98,7 +98,7 @@ const notesSlice = createSlice({
     toggleArchived(state, action) {
       for (const note of state) {
         if (note.id === action.payload) {
-          note.completed = !note.completed;
+          note.active = !note.active;
           break;
         }
       }
