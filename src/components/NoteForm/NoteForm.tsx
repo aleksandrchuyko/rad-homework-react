@@ -6,13 +6,15 @@ import { getFormateDate } from '../utils/getFormateDate';
 import { nanoid } from '@reduxjs/toolkit';
 import { parseDates } from '../utils/parseDates';
 
+import { Categories } from '../../types';
+
 type Props = {
   onClose: () => void;
 };
 const NoteForm: React.FC<Props> = ({ onClose }) => {
   const dispatch = useDispatch();
 
-  const [category, setCategory] = useState('Task');
+  const [category, setCategory] = useState<Categories>('Task');
   const [content, setContent] = useState('');
 
   const handleSubmit = (e: any) => {
