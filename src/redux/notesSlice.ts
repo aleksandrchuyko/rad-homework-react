@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Note } from '../types';
 
-const notesInitialState = [
+const notesInitialState: Note[] = [
   {
     id: '0',
     createdAt: '1/5/2023',
@@ -72,16 +73,14 @@ const notesSlice = createSlice({
   name: 'notes',
   initialState: notesInitialState,
   reducers: {
-    addNote: {
-      reducer(state, action) {
-        state.push(action.payload);
-      },
+    addNote(state, action: PayloadAction<Note>) {
+      state = [...state, action.payload];
     },
-    deleteNote(state, action) {
+    deleteNote(state, action: PayloadAction<string>) {
       const index = state.findIndex((note) => note.id === action.payload);
       state.splice(index, 1);
     },
-    updateNote(state, action) {
+    updateNote(state, action: PayloadAction<Note>) {
       for (let note of state) {
         if (note.id === action.payload.id) {
           note.content = action.payload.content;
@@ -90,7 +89,7 @@ const notesSlice = createSlice({
         }
       }
     },
-    toggleArchived(state, action) {
+    toggleArchived(state, action: PayloadAction<string>) {
       for (const note of state) {
         if (note.id === action.payload) {
           note.active = !note.active;

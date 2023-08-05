@@ -6,6 +6,4 @@ export type Note = {
   active: boolean;
   dates: string[];
 };
-export type Categories = {
-  category: 'Idea' | 'Task' | 'Random Thought';
-};
+export type Categories = 'Idea' | 'Task' | 'Random Thought';

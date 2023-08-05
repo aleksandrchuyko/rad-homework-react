@@ -14,7 +14,14 @@ type Props = {
 const EditForm: React.FC<Props> = ({ id, onClose }) => {
   const dispatch = useDispatch();
 
-  const [note, setNote] = useState({});
+  const [note, setNote] = useState<Note>({
+    id: '',
+    createdAt: '',
+    content: '',
+    category: 'Task',
+    active: false,
+    dates: [],
+  });
   const [content, setContent] = useState('');
 
   const handleSubmit = (e: any) => {
@@ -37,8 +44,18 @@ const EditForm: React.FC<Props> = ({ id, onClose }) => {
   let notes = useSelector(getNotes);
   useEffect(() => {
     let aimNote = notes.find((item: Note) => item.id === id);
+    if (!aimNote) {
+      aimNote = {
+        id: '',
+        createdAt: '',
+        content: '',
+        category: 'Task',
+        active: false,
+        dates: [],
+      };
+    }
     setNote(aimNote);
-    setContent(aimNote.content);
+    setContent(aimNote?.content);
   }, [id, notes]);
 
   return (
