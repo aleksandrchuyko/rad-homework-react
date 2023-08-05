@@ -1,3 +1,5 @@
+import css from './ActionBar.module.css';
+
 type Props = {
   openAddForm: (a: string, b?: string) => void;
   openArchive: (a: string, b?: string) => void;
@@ -5,7 +7,7 @@ type Props = {
 
 const ActionBar: React.FC<Props> = ({ openAddForm, openArchive }) => {
   return (
-    <div>
+    <div className={css.mainButtonsBar}>
       <button type='button' onClick={() => openAddForm('add')}>
         Add Note
       </button>

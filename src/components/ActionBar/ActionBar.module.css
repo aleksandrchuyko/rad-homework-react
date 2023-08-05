@@ -1,0 +1,10 @@
+.mainButtonsBar {
+	margin-top: 20px;
+	margin-bottom: 50px;
+	display: flex;
+	justify-content: end;
+
+	& button {
+		margin-right: 10px;
+	}
+}

@@ -60,8 +60,8 @@ const EditForm: React.FC<Props> = ({ id, onClose }) => {
   }, [id, notes]);
 
   return (
-    <div className={css.modalNew}>
-      <form className={css.addForm} onSubmit={handleSubmit}>
+    <div className={css.modalEdit}>
+      <form className={css.editForm} onSubmit={handleSubmit}>
         <label>
           Note
           <textarea
