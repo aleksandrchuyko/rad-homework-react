@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-
 import { nanoid } from '@reduxjs/toolkit';
 
 import { getNotes } from '../../redux/selectors';
