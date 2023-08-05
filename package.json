@@ -2,6 +2,7 @@
   "name": "rad-homework-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://aleksandrchuyko.github.io/rad-homework-react/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
