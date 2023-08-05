@@ -11,6 +11,7 @@ type Props = {
   id: string | undefined;
   onClose: () => void;
 };
+
 const EditForm: React.FC<Props> = ({ id, onClose }) => {
   const dispatch = useDispatch();
 
