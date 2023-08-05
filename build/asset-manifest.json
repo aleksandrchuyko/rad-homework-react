@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/rad-homework-react/static/css/main.15ca69ed.css",
+    "main.js": "/rad-homework-react/static/js/main.35eabcf4.js",
+    "index.html": "/rad-homework-react/index.html",
+    "main.15ca69ed.css.map": "/rad-homework-react/static/css/main.15ca69ed.css.map",
+    "main.35eabcf4.js.map": "/rad-homework-react/static/js/main.35eabcf4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.15ca69ed.css",
+    "static/js/main.35eabcf4.js"
+  ]
+}
