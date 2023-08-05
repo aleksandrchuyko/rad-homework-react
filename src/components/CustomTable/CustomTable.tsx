@@ -1,4 +1,5 @@
-import { nanoid } from 'nanoid';
+import { nanoid } from '@reduxjs/toolkit';
+
 
 type Props = {
   cols: {

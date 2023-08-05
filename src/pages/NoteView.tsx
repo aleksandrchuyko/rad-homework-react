@@ -5,6 +5,8 @@ import NoteTable from '../components/NoteTable/NoteTable';
 import StatisticTable from '../components/StatisticTable/StatisticTable';
 import { useToggle } from '../hooks/useToggle';
 import NoteForm from '../components/NoteForm/NoteForm';
+import ArchiveTable from '../components/ArchiveTable/ArchiveTable';
+import EditForm from '../components/EditForm/EditForm';
 
 const NoteView: React.FC = () => {
   const [modalContent, setModalContent] = useState(<></>);
@@ -22,8 +24,14 @@ const NoteView: React.FC = () => {
         return;
       }
 
+      case 'edit': {
+        setModalContent(<EditForm onClose={closeModal} id={noteId} />);
+        openModal();
+        return;
+      }
+
       case 'archive': {
-        setModalContent(<NoteForm onClose={closeModal} />);
+        setModalContent(<ArchiveTable onClose={closeModal} />);
         openModal();
         return;
       }
@@ -39,7 +47,7 @@ const NoteView: React.FC = () => {
   return (
     <div style={{ position: 'relative' }}>
       {isOpenModal && <ModalWindow>{modalContent}</ModalWindow>}
-      <NoteTable />
+      <NoteTable openEditForm={handleOpenModal} />
       <ActionBar openAddForm={handleOpenModal} openArchive={handleOpenModal} />
       <StatisticTable />
     </div>

@@ -8,7 +8,11 @@ import { deleteNote, toggleArchived } from '../../redux/notesSlice';
 
 import CustomTable from '../CustomTable/CustomTable';
 
-const NoteTable: React.FC = () => {
+type Props = {
+  openEditForm: (a: string, b?: string) => void;
+};
+
+const NoteTable: React.FC<Props> = ({openEditForm}) => {
   const dispatch = useDispatch();
   const cols = [
     { column: 'createdAt', title: 'Created At' },
@@ -21,7 +25,7 @@ const NoteTable: React.FC = () => {
 
   const editNote = (e: any) => {
     let id = e.target.dataset.id;
-    dispatch(toggleArchived(id));
+    openEditForm('edit', id);
   };
   const archiveNote = (e: any) => {
     let id = e.target.dataset.id;

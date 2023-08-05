@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addNote } from '../../redux/notesSlice';
 import css from './NoteForm.module.css';
+import { getFormateDate } from '../utils/getFormateDate';
+import { nanoid } from '@reduxjs/toolkit';
+import { parseDates } from '../utils/parseDates';
 
 type Props = {
   onClose: () => void;
@@ -14,8 +17,17 @@ const NoteForm: React.FC<Props> = ({ onClose }) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    
-    dispatch(addNote({category, content}));
+
+    let newNote = {
+      createdAt: getFormateDate(),
+      category,
+      content,
+      id: nanoid(),
+      active: true,
+      dates: parseDates(content),
+    };
+
+    dispatch(addNote(newNote));
     onClose();
   };
 

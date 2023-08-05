@@ -1,6 +1,4 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
-import { parseDates } from '../components/utils/parseDates';
-import { getFormatedDate } from '../components/utils/getFormatedDate';
+import { createSlice } from '@reduxjs/toolkit';
 
 const notesInitialState = [
   {
@@ -78,22 +76,19 @@ const notesSlice = createSlice({
       reducer(state, action) {
         state.push(action.payload);
       },
-      prepare({category, content}) {
-        return {
-          payload: {
-            createdAt: getFormatedDate(),
-            category,
-            content,
-            id: nanoid(),
-            active: true,
-            dates: parseDates(content),
-          },
-        };
-      },
     },
     deleteNote(state, action) {
       const index = state.findIndex((note) => note.id === action.payload);
       state.splice(index, 1);
+    },
+    updateNote(state, action) {
+      for (let note of state) {
+        if (note.id === action.payload.id) {
+          note.content = action.payload.content;
+          note.dates = action.payload.dates;
+          break;
+        }
+      }
     },
     toggleArchived(state, action) {
       for (const note of state) {
@@ -106,5 +101,6 @@ const notesSlice = createSlice({
   },
 });
 
-export const { addNote, deleteNote, toggleArchived } = notesSlice.actions;
+export const { addNote, deleteNote, updateNote, toggleArchived } =
+  notesSlice.actions;
 export const notesReducer = notesSlice.reducer;
